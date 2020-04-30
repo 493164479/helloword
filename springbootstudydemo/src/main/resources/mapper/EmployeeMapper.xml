@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace 绑定一对应的Dao/Mapper接口 -->
+<!--namespace中的名要和UserMapper.xml的接口一致-->
+<mapper namespace="com.study.qdgxy.mapper.EmployeeMapper">
+
+    <select id="getAllEmp" resultType="Employee">
+        select * from employee;
+    </select>
+
+    <insert id="addEmp" parameterType="Employee">
+        insert into employee (lastname, email, gender, birth) values (#{lastname},#{email},#{gender},#{birth});
+    </insert>
+
+    <select id="findEmpByID" parameterType="int" resultType="Employee">
+        select * from employee where id=#{id};
+    </select>
+
+    <update id="updateEmp" parameterType="Employee">
+        update employee set lastname =#{lastname},email=#{email},gender=#{gender},birth=#{birth} where id=#{id};
+    </update>
+
+    <delete id="deleteEmp" parameterType="int">
+        delete from employee where id=#{id}
+    </delete>
+</mapper>
